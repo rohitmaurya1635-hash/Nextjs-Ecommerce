@@ -1,3 +1,5 @@
+A modern, scalable e-commerce application built with Next.js 15, MongoDB, and Redux Toolkit. UI is built with shadcn/ui for a clean, accessible, and customizable component system. Features: JWT + OTP auth, email verification, product & cart management, and secure checkout — organized for easy extension and production readiness.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

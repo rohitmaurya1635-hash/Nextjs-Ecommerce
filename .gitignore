@@ -17,6 +17,14 @@
 /.next/
 /out/
 
+# Ignore public assets folder
+/public/assets
+
+# local env files
+.env
+.env.local
+.env.*.local
+
 # production
 /build
 
