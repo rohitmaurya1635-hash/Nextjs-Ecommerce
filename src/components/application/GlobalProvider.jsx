@@ -1,19 +1,28 @@
 'use client'
 
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import React, { Suspense } from 'react'
 import { persistor, store } from '@/store/store'
 
 import Loading from './Loading'
 import { PersistGate } from 'redux-persist/integration/react'
 import { Provider } from 'react-redux'
-import React from 'react'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+
+const queryClient = new QueryClient()
 
 const GlobalProvider = ({ children }) => {
     return (
-        <Provider store={store}>
-            <PersistGate persistor={persistor} loading={<Loading />}>
-                {children}
-            </PersistGate>
-        </Provider>
+        <QueryClientProvider client={queryClient}>
+            <Provider store={store}>
+                <PersistGate persistor={persistor} loading={<Loading />}>
+                    {children}
+                </PersistGate>
+            </Provider>
+            <Suspense fallback={null}>  
+                <ReactQueryDevtools initialIsOpen={false} />
+            </Suspense>
+        </QueryClientProvider>
     )
 }
 

@@ -11,26 +11,31 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import React, { useState } from 'react'
-import { WEBSITE_REGISTER, WEBSITE_RESETPASSWORD } from '@/routes/WebsiteRoutes'
+import { USER_DASHBOARD, WEBSITE_REGISTER, WEBSITE_RESETPASSWORD } from '@/routes/WebsiteRoutes'
 
-import ButtonLoading from '@/components/application/ButtonLoading'
+import { ADMIN_DASHBOARD } from '@/routes/AdminPanelRoutes'
+import ButtonLoading from '@/components/Application/ButtonLoading'
 import { FaRegEye } from "react-icons/fa6";
 import { FaRegEyeSlash } from "react-icons/fa";
 import Image from 'next/image'
 import { Input } from "@/components/ui/input"
 import Link from 'next/link'
-import OTPVerification from '@/components/application/OTPVerification'
+import OTPVerification from '@/components/Application/OTPVerification'
 import axios from 'axios'
 import { login } from '@/store/reducer/authReducer'
 import { showToast } from '@/lib/showToast'
 import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
+import { useRouter } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import z from 'zod'
 import { zSchema } from '@/lib/zodSchema'
 import { zodResolver } from "@hookform/resolvers/zod"
 
 const loginPage = () => {
     const dispatch = useDispatch()
+    const searchParams = useSearchParams()
+    const router = useRouter();
     const [loading, setLoading] = useState(false);
     const [otpVerificationLoading, setOtpVerificationLoading] = useState(false);
     const [isTypePassword, setIsTypePassword] = useState(true)
@@ -80,7 +85,14 @@ const loginPage = () => {
             setOtpEmail('')
             form.reset()
             showToast('success', otpResponse.message)
+
             dispatch(login(otpResponse.data))
+
+            if (searchParams.has('callback')) {
+                router.push(searchParams.get('callback'))
+            } else {
+                otpResponse.data.role === 'admin' ? router.push(ADMIN_DASHBOARD) : router.push(USER_DASHBOARD);
+            }
         } catch (error) {
             showToast('error', error.message)
         } finally {

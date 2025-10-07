@@ -11,16 +11,14 @@ import {
 } from "@/components/ui/form"
 import React, { useState } from 'react'
 
-import ButtonLoading from '@/components/application/ButtonLoading'
+import ButtonLoading from '@/components/Application/ButtonLoading'
 import Image from 'next/image'
 import { Input } from "@/components/ui/input"
 import Link from 'next/link'
-import OTPVerification from '@/components/application/OTPVerification'
-import UpdatePassword from '@/components/application/UpdatePassword'
+import OTPVerification from '@/components/Application/OTPVerification'
+import UpdatePassword from '@/components/Application/UpdatePassword'
 import { WEBSITE_LOGIN } from '@/routes/WebsiteRoutes'
 import axios from 'axios'
-import { email } from 'zod'
-import { login } from '@/store/reducer/authReducer'
 import { showToast } from '@/lib/showToast'
 import { useForm } from 'react-hook-form'
 import { zSchema } from '@/lib/zodSchema'

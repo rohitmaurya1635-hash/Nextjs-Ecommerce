@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/form"
 import React, { useState } from 'react'
 
-import ButtonLoading from '@/components/application/ButtonLoading'
+import ButtonLoading from '@/components/Application/ButtonLoading'
 import { FaRegEye } from "react-icons/fa6";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { Input } from "@/components/ui/input"
