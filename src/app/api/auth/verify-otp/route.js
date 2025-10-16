@@ -12,7 +12,7 @@ export async function POST(request) {
         await connectDB()
 
         const paylod = await request.json()
-         
+
         const validationSchema = zSchema.pick({ email: true, otp: true })
 
         const validatedData = validationSchema.safeParse(paylod)
@@ -54,7 +54,8 @@ export async function POST(request) {
             httpOnly: process.env.NODE_ENV === 'production',
             path: '/',
             secure: process.env.NODE_ENV === 'production',
-            sameSite: 'lax '
+            sameSite: 'lax',
+            maxAge: 60 * 60 * 24, // 24 hours
         })
 
         // remove otp after validation

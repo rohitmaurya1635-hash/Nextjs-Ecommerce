@@ -1,4 +1,4 @@
-import { ADMIN_DASHBOARD, ADMIN_MEDIA_SHOW } from "@/routes/AdminPanelRoutes";
+import { ADMIN_CATEGORY_ADD, ADMIN_CATEGORY_SHOW, ADMIN_DASHBOARD, ADMIN_MEDIA_SHOW } from "@/routes/AdminPanelRoutes";
 
 import { AiOutlineDashboard } from "react-icons/ai";
 import { BiCategory } from "react-icons/bi";
@@ -22,11 +22,11 @@ export const adminAppSidebarmenu = [
         submenu: [
             {
                 title: "All Category",
-                url: "#",
+                url: ADMIN_CATEGORY_SHOW,
             },
             {
                 title: "Add Category",
-                url: "#",
+                url: ADMIN_CATEGORY_ADD,
             }
         ]
     },

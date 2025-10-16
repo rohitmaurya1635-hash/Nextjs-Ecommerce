@@ -37,4 +37,6 @@ export const zSchema = z.object({
 
     title: z.string().min(3, 'Title is required'),
 
+    slug: z.string().min(3, 'Slug is required'),
+
 })

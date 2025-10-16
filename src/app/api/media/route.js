@@ -1,8 +1,8 @@
-import { catchError, isAuthenticated } from "@/lib/helperFunction";
-
 import MediaModel from "@/models/Media.model";
 import { NextResponse } from "next/server";
+import { catchError } from "@/lib/helperFunction";
 import { connectDB } from "@/lib/databaseConnection";
+import { isAuthenticated } from "@/lib/authantication";
 
 export async function GET(request) {
     try {
