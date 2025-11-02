@@ -1,10 +1,9 @@
 import { catchError, response } from "@/lib/helperFunction";
 
-import CategoryModel from "@/models/Category.Model";
 import { NextResponse } from "next/server";
+import ProductModel from "@/models/Product.Model";
 import { connectDB } from "@/lib/databaseConnection";
 import { isAuthenticated } from "@/lib/authantication";
-import { success } from "zod";
 
 export async function GET(request, { params }) {
     try {
@@ -38,13 +37,45 @@ export async function GET(request, { params }) {
         if (globalFilter) {
             matchQuery["$or"] = [
                 { name: { $regex: globalFilter, $options: 'i' } },
-                { slug: { $regex: globalFilter, $options: 'i' } }
+                { slug: { $regex: globalFilter, $options: 'i' } },
+                { "categoryData.name": { $regex: globalFilter, $options: 'i' } },
+                {
+                    $expr: {
+                        $regexMatch: {
+                            input: { $toString: "$mrp" },
+                            regex: globalFilter,
+                            options: 'i',
+                        }
+                    }
+                },
+                {
+                    $expr: {
+                        $regexMatch: {
+                            input: { $toString: "$sellingPrice" },
+                            regex: globalFilter,
+                            options: 'i',
+                        }
+                    }
+                },
+                {
+                    $expr: {
+                        $regexMatch: {
+                            input: { $toString: "$discountPercentage" },
+                            regex: globalFilter,
+                            options: 'i',
+                        }
+                    }
+                }
             ]
         }
 
         // Column filtration
         filters.forEach(filter => {
-            matchQuery[filter.id] = { $regex: filter.value, $options: 'i' }
+            if (filter.id === 'mrp' || filter.id === 'sellingPrice' || filter.id === 'dicountPercentage') {
+                matchQuery[filter.id] = Number(filter.value)
+            } else {
+                matchQuery[filter.id] = { $regex: filter.value, $options: 'i' }
+            }
         });
 
         // Sorting
@@ -55,6 +86,15 @@ export async function GET(request, { params }) {
 
         // Agrigate pipeline
         const aggregatePipeline = [
+            {
+                $lookup: {
+                    from: 'categories',
+                    localField: 'category',
+                    foreignField: '_id',
+                    as: 'categoryData'
+                }
+            },
+            { $unwind: { path: '$categoryData', preserveNullAndEmptyArrays: true } },
             { $match: matchQuery },
             { $sort: Object.keys(sortQuery).length ? sortQuery : { createdAt: 1 } },
             { $skip: start },
@@ -64,6 +104,12 @@ export async function GET(request, { params }) {
                     _id: 1,
                     name: 1,
                     slug: 1,
+                    mrp: 1,
+                    sellingPrice: 1,
+                    discountPercentage: 1,
+                    description: 1,
+                    media: 1,
+                    category: '$categoryData.name',
                     created: 1,
                     updatedAt: 1,
                     deletedAt: 1,
@@ -72,14 +118,14 @@ export async function GET(request, { params }) {
         ]
 
         // Execute query
-        const getCategory = await CategoryModel.aggregate(aggregatePipeline)
+        const getproduct = await ProductModel.aggregate(aggregatePipeline)
 
         // Get total row count
-        const totalRowCount = await CategoryModel.countDocuments(matchQuery)
+        const totalRowCount = await ProductModel.countDocuments(matchQuery)
 
         return NextResponse.json({
             success: true,
-            data: getCategory,
+            data: getproduct,
             meta: { totalRowCount }
         })
 

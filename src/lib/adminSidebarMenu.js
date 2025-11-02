@@ -1,4 +1,4 @@
-import { ADMIN_CATEGORY_ADD, ADMIN_CATEGORY_SHOW, ADMIN_DASHBOARD, ADMIN_MEDIA_SHOW } from "@/routes/AdminPanelRoutes";
+import { ADMIN_CATEGORY_ADD, ADMIN_CATEGORY_SHOW, ADMIN_DASHBOARD, ADMIN_MEDIA_SHOW, ADMIN_PRODUCT_ADD, ADMIN_PRODUCT_SHOW } from "@/routes/AdminPanelRoutes";
 
 import { AiOutlineDashboard } from "react-icons/ai";
 import { BiCategory } from "react-icons/bi";
@@ -36,15 +36,15 @@ export const adminAppSidebarmenu = [
         icon: IoShirtOutline,
         submenu: [
             {
-                title: "Add Product",
-                url: "#",
-            },
-            {
-                title: "Add Varient",
-                url: "#",
-            },
-            {
                 title: "All Product",
+                url: ADMIN_PRODUCT_SHOW,
+            },
+            {
+                title: "Add Product",
+                url: ADMIN_PRODUCT_ADD,
+            },
+            {
+                title: "All Varient",
                 url: "#",
             },
             {

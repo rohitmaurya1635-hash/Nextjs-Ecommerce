@@ -9,3 +9,31 @@ export const DT_CATEGORY_COLUMN = [
     },
 
 ]
+
+export const DT_PRODUCT_COLUMN = [
+    {
+        accessorKey: 'name',
+        header: 'Product Name',
+    },
+    {
+        accessorKey: 'slug',
+        header: 'Slug',
+    },
+    {
+        accessorKey: 'category',
+        header: 'Category',
+    },
+    {
+        accessorKey: 'mrp',
+        header: 'MRP',
+    },
+    {
+        accessorKey: 'sellingPrice',
+        header: 'Selling Price',
+    },
+    {
+        accessorKey: 'discountPercentage',
+        header: 'Discount %',
+    },
+
+]

@@ -39,4 +39,24 @@ export const zSchema = z.object({
 
     slug: z.string().min(3, 'Slug is required'),
 
+    category: z.string().min(3, 'Category is required'),
+
+    mrp: z.union([
+        z.number().positive("MRP must be a positive number"),
+        z.string().transform((val) => Number(val)).refine((val) => !isNaN(val) && val >= 0, 'Please enter a valid number')
+    ]),
+
+    sellingPrice: z.union([
+        z.number().positive("Selling Price must be a positive number"),
+        z.string().transform((val) => Number(val)).refine((val) => !isNaN(val) && val >= 0, 'Please enter a valid number')
+    ]),
+
+    discountPercentage: z.union([
+        z.number().positive("Discount Percentage must be a positive number"),
+        z.string().transform((val) => Number(val)).refine((val) => !isNaN(val) && val >= 0, 'Please enter a valid number')
+    ]),
+
+    description: z.string().min(10, "Description must be at least 10 characters long"),
+
+    media: z.array(z.string())
 })

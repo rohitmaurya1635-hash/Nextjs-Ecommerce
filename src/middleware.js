@@ -19,7 +19,6 @@ export async function middleware(request) {
 
         // verify token
         const access_token = request.cookies.get('access_token')
-        console.log(access_token)
         const { payload } = await jwtVerify(access_token.value, new TextEncoder().encode(process.env.SECRET_KEY))
 
         const role = payload.role

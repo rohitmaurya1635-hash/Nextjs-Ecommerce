@@ -3,27 +3,27 @@ import mongoose from "mongoose";
 const mediaSchema = new mongoose.Schema({
     asset_id: {
         type: String,
-        require: true,
+        required: true,
         trim: true,
     },
     public_id: {
         type: String,
-        require: true,
+        required: true,
         trim: true,
     },
     path: {
         type: String,
-        require: true,
+        required: true,
         trim: true,
     },
     secure_url: {
         type: String,
-        require: true,
+        required: true,
         trim: true,
     },
     thumbnail_url: {
         type: String,
-        require: true,
+        required: true,
         trim: true,
     },
     alt: {
