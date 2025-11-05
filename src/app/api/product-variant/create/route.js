@@ -1,8 +1,7 @@
 import { catchError, response } from "@/lib/helperFunction"
 
-import ProductModel from "@/models/Product.Model"
+import ProductVariantModel from "@/models/ProductVariant.Model"
 import { connectDB } from "@/lib/databaseConnection"
-import { encode } from "entities"
 import { isAuthenticated } from "@/lib/authantication"
 import { zSchema } from "@/lib/zodSchema"
 
@@ -18,13 +17,13 @@ export async function POST(request) {
         const payload = await request.json()
 
         const validtionSchema = zSchema.pick({
-            name: true,
-            slug: true,
-            category: true,
+            product: true,
+            sku: true,
+            color: true,
+            size: true,
             mrp: true,
             sellingPrice: true,
             discountPercentage: true,
-            description: true,
             media: true,
         }).refine(
             (data) => data.sellingPrice <= data.mrp,
@@ -39,13 +38,13 @@ export async function POST(request) {
             return response(false, 400, 'Invalid or missing input fields', validatedData.error)
         }
 
-        const { name, slug, category, mrp, sellingPrice, discountPercentage, description, media } = validatedData.data
+        const { product, sku, color, size, mrp, sellingPrice, discountPercentage, media } = validatedData.data
 
-        const newProduct = new ProductModel({ name, slug, category, mrp, sellingPrice, discountPercentage, description: encode(description), media })
+        const newProduct = new ProductVariantModel({ product, sku, color, size, mrp, sellingPrice, discountPercentage, media })
 
         await newProduct.save()
 
-        return response(true, 200, 'Product craeted successfully',)
+        return response(true, 200, 'Product Variant craeted successfully',)
 
     } catch (error) {
         return catchError(error)

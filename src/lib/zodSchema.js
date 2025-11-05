@@ -58,5 +58,13 @@ export const zSchema = z.object({
 
     description: z.string().min(10, "Description must be at least 10 characters long"),
 
-    media: z.array(z.string())
+    media: z.array(z.string()),
+
+    product: z.string().min(3, 'Product is Required'),
+
+    sku: z.string().min(3, 'SKU is Required'),
+
+    color: z.string().min(3, 'Color is Required'),
+    
+    size: z.string().min(1, 'Size is Required'),
 })
