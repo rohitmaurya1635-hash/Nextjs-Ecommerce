@@ -1,6 +1,6 @@
 import { catchError, response } from "@/lib/helperFunction";
 
-import ProductModel from "@/models/Product.Model";
+import CouponModel from "@/models/Coupon.model";
 import { connectDB } from "@/lib/databaseConnection";
 import { isAuthenticated } from "@/lib/authantication";
 
@@ -16,13 +16,13 @@ export async function GET(request) {
             deletedAt: null
         }
 
-        const getProduct = await ProductModel.find(filter).select('-media -description').sort({ createdAt: -1 }).lean()
+        const getCoupon = await CouponModel.find(filter).sort({ createdAt: -1 }).lean()
 
-        if (!getProduct) {
+        if (!getCoupon) {
             return response(false, 404, 'Collection Empty')
         }
 
-        return response(true, 200, 'Product found', getProduct)
+        return response(true, 200, 'Coupon found', getCoupon)
 
     } catch (error) {
         return catchError(error)

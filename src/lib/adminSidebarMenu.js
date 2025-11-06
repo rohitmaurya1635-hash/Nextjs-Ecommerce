@@ -1,4 +1,4 @@
-import { ADMIN_CATEGORY_ADD, ADMIN_CATEGORY_SHOW, ADMIN_DASHBOARD, ADMIN_MEDIA_SHOW, ADMIN_PRODUCT_ADD, ADMIN_PRODUCT_SHOW, ADMIN_PRODUCT_VARIANT_ADD, ADMIN_PRODUCT_VARIANT_SHOW } from "@/routes/AdminPanelRoutes";
+import { ADMIN_CATEGORY_ADD, ADMIN_CATEGORY_SHOW, ADMIN_COUPON_ADD, ADMIN_COUPON_SHOW, ADMIN_CUSTOMER_SHOW, ADMIN_DASHBOARD, ADMIN_MEDIA_SHOW, ADMIN_PRODUCT_ADD, ADMIN_PRODUCT_SHOW, ADMIN_PRODUCT_VARIANT_ADD, ADMIN_PRODUCT_VARIANT_SHOW } from "@/routes/AdminPanelRoutes";
 
 import { AiOutlineDashboard } from "react-icons/ai";
 import { BiCategory } from "react-icons/bi";
@@ -60,11 +60,11 @@ export const adminAppSidebarmenu = [
         submenu: [
             {
                 title: "All Coupons",
-                url: "#",
+                url: ADMIN_COUPON_SHOW,
             },
             {
                 title: "Add Coupons",
-                url: "#",
+                url: ADMIN_COUPON_ADD,
             }
         ]
     },
@@ -75,7 +75,7 @@ export const adminAppSidebarmenu = [
     },
     {
         title: "Customers",
-        url: "#",
+        url: ADMIN_CUSTOMER_SHOW,
         icon: LuUserRound,
     },
     {

@@ -28,8 +28,7 @@ export const zSchema = z.object({
         .min(3, "Username must be at least 3 characters")
         .max(20, "Username must not exceed 20 characters"),
 
-    otp: z.string()
-        .min(6, { message: "Your one-time password must be 6 characters." }),
+    otp: z.string().min(6, { message: "Your one-time password must be 6 characters." }),
 
     _id: z.string().min(3, '_id is required'),
 
@@ -65,6 +64,17 @@ export const zSchema = z.object({
     sku: z.string().min(3, 'SKU is Required'),
 
     color: z.string().min(3, 'Color is Required'),
-    
+
     size: z.string().min(1, 'Size is Required'),
+
+    code: z.string()
+        .trim()
+        .min(3, "Coupon code must be at least 3 characters long")
+        .max(50, "Coupon code cannot exceed 50 characters"),
+
+    minShoppingAmount: z.union([
+        z.number().positive("Min. shopping amount must be a positive number"),
+        z.string().transform((val) => Number(val)).refine((val) => !isNaN(val) && val >= 0, 'Please enter a valid number')
+    ]),
+    validity: z.coerce.date(),
 })

@@ -1,7 +1,7 @@
 'use client'
 
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
-import { DT_CATEGORY_COLUMN, DT_PRODUCT_COLUMN, DT_PRODUCT_VARIANT_COLUMN } from '@/lib/column'
+import { DT_CATEGORY_COLUMN, DT_CUSTOMERS_COLUMN, DT_PRODUCT_COLUMN, DT_PRODUCT_VARIANT_COLUMN } from '@/lib/column'
 import React, { useCallback, useMemo } from 'react'
 
 import { ADMIN_DASHBOARD } from '@/routes/AdminPanelRoutes'
@@ -37,7 +37,14 @@ const TRASH_CONFIG = {
         fetchUrl: '/api/product-variant',
         exportUrl: '/api/product-variant/export',
         deleteUrl: '/api/product-variant/delete',
-    }
+    },
+    "customers": {
+        title: 'Customer Trash',
+        columns: DT_CUSTOMERS_COLUMN,
+        fetchUrl: '/api/customers',
+        exportUrl: '/api/customers/export',
+        deleteUrl: '/api/customers/delete',
+    },
 }
 
 const TrashPage = () => {
@@ -47,7 +54,7 @@ const TrashPage = () => {
     const config = TRASH_CONFIG[trashOf];
 
     const columns = useMemo(() => {
-        return columnConfig(config.columns, false, false, true )
+        return columnConfig(config.columns, false, false, true)
     }, [])
 
     const action = useCallback((row, deleteType, handleDelete) => {

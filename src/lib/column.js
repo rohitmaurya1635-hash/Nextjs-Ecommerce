@@ -1,3 +1,8 @@
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
+import { Chip } from "@mui/material";
+import { useInitials } from "@/hooks/use-initials";
+
 export const DT_CATEGORY_COLUMN = [
     {
         accessorKey: 'name',
@@ -66,6 +71,87 @@ export const DT_PRODUCT_VARIANT_COLUMN = [
     {
         accessorKey: 'discountPercentage',
         header: 'Discount %',
+    },
+
+]
+
+export const DT_COUPON_COLUMN = [
+    {
+        accessorKey: 'code',
+        header: 'Coupon Code',
+    },
+    {
+        accessorKey: 'discountPercentage',
+        header: 'Discount %',
+    },
+    {
+        accessorKey: 'minShoppingAmount',
+        header: 'Min Shopping Amount',
+    },
+    {
+        accessorKey: 'validity',
+        header: 'Validity',
+        Cell: ({ renderedCellValue }) => {
+            const isExpired = new Date() > new Date(renderedCellValue);
+            const formattedDate = new Date(renderedCellValue).toLocaleDateString();
+            return (
+                <Chip
+                    label={`${isExpired ? 'Expired' : 'Active'} (${formattedDate})`}
+                    color={isExpired ? 'error' : 'success'}
+                    variant="outlined"
+                />
+            );
+        }
+    }
+]
+
+export const DT_CUSTOMERS_COLUMN = [
+    {
+        accessorKey: 'avatar',
+        header: 'Avatar',
+        Cell: ({ row }) => {
+            const getInitials = useInitials();
+            const avatar = row.original.avatar;
+            const name = row.original.name; 
+            
+            return (
+                <Avatar>
+                    <AvatarImage src={avatar?.url} alt={name} />
+                    <AvatarFallback>
+                        {getInitials(name)}
+                    </AvatarFallback>
+                </Avatar>
+            );
+        }
+    },
+    {
+        accessorKey: 'name',
+        header: 'Name',
+    },
+    {
+        accessorKey: 'email',
+        header: 'Email',
+    },
+    {
+        accessorKey: 'phone',
+        header: 'Phone',
+    },
+    {
+        accessorKey: 'address',
+        header: 'Address',
+    },
+    {
+        accessorKey: 'isEmailVerified',
+        header: 'Is Verified',
+        Cell: ({ renderedCellValue }) => {
+            return (
+                <Chip
+                    label={`${renderedCellValue ? 'Verified' : 'Not  Verified'}`}
+                    color={renderedCellValue ? 'success' : 'error'}
+                    variant="outlined"
+                />
+            );
+        }
     },
 
 ]

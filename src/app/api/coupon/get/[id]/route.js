@@ -1,0 +1,39 @@
+import { catchError, response } from "@/lib/helperFunction";
+
+import CouponModel from "@/models/Coupon.model";
+import { connectDB } from "@/lib/databaseConnection";
+import { isAuthenticated } from "@/lib/authantication";
+import { isValidObjectId } from "mongoose";
+
+export async function GET(request, { params }) {
+    try {
+        const auth = await isAuthenticated('admin')
+        if (!auth.isAuth) {
+            return response(false, 403, 'Unauthorized Access.')
+        }
+        await connectDB()
+
+        const getParams = await params
+        const id = getParams.id
+
+        const filter = {
+            deletedAt: null
+        }
+
+        if (!isValidObjectId(id)) {
+            return response(false, 400, 'Invalid object id.')
+        }
+
+        filter._id = id
+
+        const getcoupon = await CouponModel.findOne(filter).lean()
+
+        if (!getcoupon) {
+            return response(false, 404, 'Coupon not found')
+        }
+        return response(true, 200, 'Coupon found', getcoupon)
+
+    } catch (error) {
+        return catchError(error)
+    }
+}
