@@ -11,9 +11,29 @@ const reviewSchema = new mongoose.Schema({
         ref: 'User',
         required: true,
     },
+    rating: {
+        type: Number,
+        required: true,
+        trim: true,
+        min: 1,
+        max: 5,
+    },
+    title: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+    review: {
+        type: String,
+        required: true,
+        trim: true,
+    },
     deletedAt: {
         type: Date,
         default: null,
         index: true,
     }
 }, { timestamps: true })
+
+const ReviewModel = mongoose.models.Review || mongoose.model('Review', reviewSchema, 'reviews');
+export default ReviewModel;

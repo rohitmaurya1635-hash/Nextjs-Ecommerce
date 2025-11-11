@@ -38,12 +38,19 @@ const TRASH_CONFIG = {
         exportUrl: '/api/product-variant/export',
         deleteUrl: '/api/product-variant/delete',
     },
-    "customers": {
+    customers: {
         title: 'Customer Trash',
         columns: DT_CUSTOMERS_COLUMN,
         fetchUrl: '/api/customers',
         exportUrl: '/api/customers/export',
         deleteUrl: '/api/customers/delete',
+    },
+    review: {
+        title: 'Review Trash',
+        columns: DT_CUSTOMERS_COLUMN,
+        fetchUrl: '/api/review',
+        exportUrl: '/api/review/export',
+        deleteUrl: '/api/review/delete',
     },
 }
 

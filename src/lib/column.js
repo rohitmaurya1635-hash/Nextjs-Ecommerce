@@ -112,8 +112,8 @@ export const DT_CUSTOMERS_COLUMN = [
         Cell: ({ row }) => {
             const getInitials = useInitials();
             const avatar = row.original.avatar;
-            const name = row.original.name; 
-            
+            const name = row.original.name;
+
             return (
                 <Avatar>
                     <AvatarImage src={avatar?.url} alt={name} />
@@ -154,4 +154,27 @@ export const DT_CUSTOMERS_COLUMN = [
         }
     },
 
+]
+
+export const DT_REVIEW_COLUMN = [
+    {
+        accessorKey: 'product',
+        header: 'Product',
+    },
+    {
+        accessorKey: 'user',
+        header: 'User',
+    },
+    {
+        accessorKey: 'title',
+        header: 'Title',
+    },
+    {
+        accessorKey: 'rating',
+        header: 'Rating',
+    },
+    {
+        accessorKey: 'review',
+        header: 'Review',
+    },
 ]
