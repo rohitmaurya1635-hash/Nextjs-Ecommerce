@@ -1,5 +1,6 @@
 'use client'
 
+import AdminSearch from './AdminSearch';
 import { Button } from '@/components/ui/button'
 import React from 'react'
 import { RiMenu4Fill } from "react-icons/ri";
@@ -13,7 +14,7 @@ export const TopBar = () => {
         <div className="fixed border h-14 w-full top-0 left-0 z-30 md:pl-72 md:pr-8 px-5 flex justify-between items-center bg-white dark:bg-card">
 
             <div>
-                search component
+                <AdminSearch />
             </div>
 
             <div className="flex items-center gap-2">
