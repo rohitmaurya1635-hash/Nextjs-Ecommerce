@@ -27,7 +27,7 @@ export async function GET(request, { params }) {
 
         filter._id = id
 
-        const getproduct = await ProductModel.findOne(filter).populate('media', '_id secure_url').lean()
+        const getproduct = await ProductModel.findOne(filter).populate('media').lean()
 
         if (!getproduct) {
             return response(false, 404, 'Product not found')

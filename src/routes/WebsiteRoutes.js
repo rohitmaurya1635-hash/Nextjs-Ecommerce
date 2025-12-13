@@ -6,3 +6,6 @@ export const WEBSITE_RESETPASSWORD = '/auth/reset-password'
 
 // User Routes
 export const USER_DASHBOARD = '/my-account'
+
+export const WEBSITE_SHOP = '/shop' 
+export const WEBSITE_PRODUCT_DETAILS = (slug) => slug ? `/product/${slug}` : '/product' 
