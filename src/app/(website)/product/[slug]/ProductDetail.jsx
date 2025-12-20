@@ -9,7 +9,7 @@ import {
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 import { HiMinus, HiPlus } from "react-icons/hi2"
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { WEBSITE_CART, WEBSITE_HOME, WEBSITE_PRODUCT_DETAILS, WEBSITE_SHOP } from "@/routes/WebsiteRoutes"
 import { useDispatch, useSelector } from "react-redux"
 
@@ -28,28 +28,20 @@ import { useEffect } from "react"
 const ProductDetail = ({ product, variant, colors, sizes, reviewCount }) => {
     const [activeThumb, setActiveThumb] = useState()
     const [qty, setQty] = useState(1)
-    const [isAddedIntoCart, setIsAddedIntoCart] = useState(false);
     const [isProductLoading, setIsProductLoading] = useState(false)
     const dispatch = useDispatch()
     const cartStore = useSelector(store => store.cartStore)
+    const isAddedIntoCart = useMemo(() => {
+        return cartStore.products.some((p) =>
+            p.productId === product._id &&
+            p.variantId === variant._id
+        );
+    }, [cartStore.products, product._id, variant._id]);
+
 
     useEffect(() => {
         setActiveThumb(variant.media[0].secure_url)
     }, [variant])
-
-    useEffect(() => {
-        if (cartStore.count > 0) {
-            const existingProduct = cartStore.products.findIndex((cartProduct) => cartProduct.productId === product._id && cartProduct.variantId === variant._id)
-
-            if (existingProduct >= 0) {
-                setIsAddedIntoCart(true)
-            } else {
-                setIsAddedIntoCart(false)
-            }
-        }
-        setIsProductLoading(false)
-    }, [variant])
-
 
     const handleThumb = (thumbUrl) => {
         setActiveThumb(thumbUrl)
@@ -77,7 +69,6 @@ const ProductDetail = ({ product, variant, colors, sizes, reviewCount }) => {
             qty: qty,
         }
         dispatch(addIntoCart(cartProduct))
-        setIsAddedIntoCart(true)
         showToast('success', 'Product added into cart')
     }
 
@@ -188,7 +179,7 @@ const ProductDetail = ({ product, variant, colors, sizes, reviewCount }) => {
                                 <Link
                                     key={size}
                                     href={`${WEBSITE_PRODUCT_DETAILS(product.slug)}?color=${variant.color}&size=${size}`}
-                                    onClick={() => setIsProductLoading(true)}
+                                    // onClick={() => setIsProductLoading(true)}
                                     className={`border py-1 px-3 rounded-lg cursor-pointer hover:bg-primary hover:text-white ${variant.size === size ? 'bg-primary text-white' : ''}`}
                                 >
                                     {size}
@@ -241,7 +232,7 @@ const ProductDetail = ({ product, variant, colors, sizes, reviewCount }) => {
 
 
             <div className="mb-20">
-                <ProductReview productId={ product._id} />
+                <ProductReview productId={product._id} />
             </div>
 
 

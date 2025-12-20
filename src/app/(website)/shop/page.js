@@ -45,7 +45,7 @@ const ShopPage = () => {
             return lastPage.nextPage ?? false;
         }
     })
-    // console.log(data);
+
 
     return (
         <div>
