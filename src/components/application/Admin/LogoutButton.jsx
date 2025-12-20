@@ -5,6 +5,8 @@ import { DropdownMenuItem } from '@/components/ui/dropdown-menu'
 import React from 'react'
 import { WEBSITE_LOGIN } from "@/routes/WebsiteRoutes";
 import axios from "axios";
+import { logout } from "@/store/reducer/authReducer";
+import { persistor } from "@/store/store";
 import { showToast } from "@/lib/showToast";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
@@ -19,6 +21,7 @@ const LogoutButton = () => {
                 throw new Error(logoutResponse.message)
             }
             dispatch(logout())
+            await persistor.purge();
             showToast(logoutResponse.message)
             router.push(WEBSITE_LOGIN)
         } catch (error) {

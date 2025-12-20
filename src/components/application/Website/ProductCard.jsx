@@ -1,11 +1,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { WEBSITE_PRODUCT_DETAILS } from '@/routes/WebsiteRoutes'
 
 const ProductCard = ({ product }) => {
     return (
         <div className='rounded-lg hover:shadow-lg border overflow-hidden'>
-            <Link href={`/product/${product.slug}`}>
+            <Link href={WEBSITE_PRODUCT_DETAILS(product.slug)}>
                 <Image
                     src={product?.media[0]?.secure_url || '/assets/images/img-placeholder.webp'}
                     width={400}

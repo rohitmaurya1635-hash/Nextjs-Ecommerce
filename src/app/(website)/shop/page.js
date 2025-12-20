@@ -42,7 +42,7 @@ const ShopPage = () => {
         queryFn: async ({ pageParam }) => await fetchProduct(pageParam),
         initialPageParam: 1,
         getNextPageParam: (lastPage) => {
-            return lastPage.nextPage
+            return lastPage.nextPage ?? false;
         }
     })
     // console.log(data);

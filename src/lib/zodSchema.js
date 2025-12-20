@@ -76,5 +76,15 @@ export const zSchema = z.object({
         z.number().positive("Min. shopping amount must be a positive number"),
         z.string().transform((val) => Number(val)).refine((val) => !isNaN(val) && val >= 0, 'Please enter a valid number')
     ]),
+
     validity: z.coerce.date(),
+
+    userId: z.string().min(3, 'User Id is Required'),
+
+    rating: z.union([
+        z.number().positive("Min. shopping amount must be a positive number"),
+        z.string().transform((val) => Number(val)).refine((val) => !isNaN(val) && val >= 0, 'Please enter a valid number')
+    ]),
+
+    review: z.string().min(3, 'Review is required')
 })
