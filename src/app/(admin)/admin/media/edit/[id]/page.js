@@ -46,7 +46,6 @@ const EditMediaPage = () => {
     useEffect(() => {
         if (mediaData && mediaData.success) {
             const data = mediaData.data;
-            console.log(data)
             form.reset({
                 _id: data._id,
                 alt: data.alt,

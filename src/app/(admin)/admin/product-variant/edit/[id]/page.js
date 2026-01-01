@@ -74,8 +74,6 @@ const EditProductVariant = ({ params }) => {
         },
     })
 
-    console.log("form errors", form.formState.errors)
-
     useEffect(() => {
         if (getProductVariant && getProductVariant.success) {
             const productVaiant = getProductVariant.data
@@ -90,10 +88,8 @@ const EditProductVariant = ({ params }) => {
                 discountPercentage: productVaiant.discountPercentage,
             })
             if (productVaiant.media) {
-                console.log(productVaiant.media);
                 const media = productVaiant.media.map((media) => ({ _id: media._id, url: media.secure_url }))
                 setSelectedMedia(media)
-                console.log(selectedMedia);
             }
         }
     }, [getProductVariant])

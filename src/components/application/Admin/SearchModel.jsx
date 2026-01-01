@@ -27,7 +27,6 @@ const SearchModel = ({ open, setOpen }) => {
 
     useEffect(() => {
         query.trim() === "" ? setResults([]) : setResults(fuse.search(query).map(({ item }) => item))
-        console.log(results)
     }, [query, setQuery])
     return (
         <Dialog open={open} onOpenChange={setOpen}>

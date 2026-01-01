@@ -87,7 +87,7 @@ const ShopPage = () => {
                     <div className='grid lg:grid-cols-3 grid-cols-2 sm:gap-10 gap-5 my-10 '>
                         {data && data.pages.map(page => (
                             page.products.map(product => (
-                                < ProductCard key={product._id} product={product} />
+                                <ProductCard key={product._id} product={product} />
                             ))
                         ))}
                     </div>

@@ -7,7 +7,7 @@ import ProductVariantModel from "@/models/ProductVariant.Model";
 import { connectDB } from "@/lib/databaseConnection";
 import { isAuthenticated } from "@/lib/authantication";
 
-export async function GET() {
+export async function GET(request) {
     try {
         // Check is admin
         await connectDB()
@@ -19,18 +19,14 @@ export async function GET() {
 
         const userId = auth.userId
 
-        // Get Recent Orders 
-        const recentOrders = await OrderModel.find({ user: userId })
+        const orders = await OrderModel.find({ user: userId })
             .populate('products.productId', 'name slug')
             .populate({
                 path: 'products.variantId',
                 populate: { path: 'media' }
-            }).limit(5).lean();
+            }).lean();
 
-        // Get Total Order count
-        const totalOrders = await OrderModel.countDocuments({ user: userId })
-
-        return response(true, 200, 'dashboard Info', { recentOrders, totalOrders })
+        return response(true, 200, 'dashboard Info', orders)
     } catch (error) {
         return catchError(error)
     }

@@ -21,13 +21,15 @@ import { WEBSITE_LOGIN } from '@/routes/WebsiteRoutes'
 import axios from 'axios'
 import { showToast } from '@/lib/showToast'
 import { useForm } from 'react-hook-form'
+import { useRouter } from 'next/navigation'
 import z from 'zod'
 import { zSchema } from '@/lib/zodSchema'
 import { zodResolver } from "@hookform/resolvers/zod"
 
-const registerpage = () => {
+const RegisterPage = () => {
     const [loading, setLoading] = useState(false);
     const [isTypePassword, setIsTypePassword] = useState(true)
+    const router = useRouter();
 
     const formSchema = zSchema.pick({
         name: true,
@@ -58,6 +60,7 @@ const registerpage = () => {
                 throw new Error(registerResponse.message)
             }
             form.reset()
+            router.push(WEBSITE_LOGIN)
             showToast('success', registerResponse.message)
 
         } catch (error) {
@@ -178,4 +181,4 @@ const registerpage = () => {
     )
 }
 
-export default registerpage
+export default RegisterPage

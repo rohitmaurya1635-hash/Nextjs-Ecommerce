@@ -69,7 +69,6 @@ const Datatable = ({
             download(csvConfig)(csv)
             showToast('Export Success')
         } catch (error) {
-            console.log(error)
             showToast(error)
         } finally {
             setExportLoading(false)

@@ -18,3 +18,5 @@ export const sortingOptions = [
     { label: 'Price: High to Low', value: 'price-desc' },
     { label: 'Newest Arrivals', value: 'newest' },
 ]
+
+export const orderStatus = ['pending', 'processing', 'shipped', 'delivered', 'cancelled', 'unverified']

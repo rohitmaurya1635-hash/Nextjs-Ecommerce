@@ -1,54 +1,27 @@
 'use client'
 
-import { HiOutlineShoppingBag } from 'react-icons/hi2'
-import { IoCartOutline } from 'react-icons/io5'
 import Link from 'next/link'
 import React from 'react'
 import UserPageWrapper from '@/components/Application/Website/UserPageWrapper'
 import { WEBSITE_ORDER_DETAILS } from '@/routes/WebsiteRoutes'
 import useFetch from '@/hooks/useFetch'
-import { useSelector } from 'react-redux'
 
 const breadcrumb = {
-    title: 'Dashboard',
-    links: [{ label: 'Dashboard' }]
+    title: 'Orders',
+    links: [{ label: 'Orders' }]
 }
 
-const MyAccount = () => {
-    const { data: dashboardData } = useFetch('api/dashboard/user')
-    const cartStore = useSelector(store => store.cartStore)
+const UserOrderPage = () => {
+    const { data: ordresData, loading } = useFetch('api/dashboard/user/orders')
     return (
         <UserPageWrapper breadcrumb={breadcrumb}>
             <div className='shadow rounded'>
-                <div className='p-5 text-xl font-semibold border'>Dasahboard</div>
+                <div className='p-5 text-xl font-semibold border'>My Orders</div>
 
                 <div className='p-5'>
-                    <div className='grid lg:grid-cols-2 grid-cols-1 gap-10'>
-
-                        <div className='flex items-center justify-between gap-5 border rounded p-3'>
-                            <div>
-                                <h4 className='font-semibold text-lg mb-1'>Total Orders</h4>
-                                <span className='font-semibold text-gray-500'>{dashboardData?.data?.totalOrders}</span>
-                            </div>
-                            <div className='w-16 h-16 bg-primary rounded-full flex justify-center items-center'>
-                                <HiOutlineShoppingBag className='text-white' size={25} />
-                            </div>
-                        </div>
-
-                        <div className='flex items-center justify-between gap-5 border rounded p-3'>
-                            <div>
-                                <h4 className='font-semibold text-lg mb-1'>Items In Cart</h4>
-                                <span className='font-semibold text-gray-500'>{cartStore.totalQty}</span>
-                            </div>
-                            <div className='w-16 h-16 bg-primary rounded-full flex justify-center items-center'>
-                                <IoCartOutline className='text-white' size={25} />
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div className='mt-5'>
-                        <h4 className='text-lg font-semibold mb-3'>Recent Orders</h4>
+                    {loading ?
+                        <div className='text-center py-5'>Loading</div>
+                        :
                         <div className='overflow-auto'>
                             <table className='w-full'>
                                 <thead>
@@ -60,7 +33,7 @@ const MyAccount = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {dashboardData && dashboardData?.data?.recentOrders?.map((order, i) => (
+                                    {ordresData && ordresData?.data?.map((order, i) => (
                                         <tr key={order._id}>
                                             <td className='text-start text-sm text-gray-500 p-2 font-bold'>{i + 1}</td>
                                             <td className='text-start text-sm text-gray-500 p-2 font-bold'>
@@ -74,7 +47,7 @@ const MyAccount = () => {
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    }
 
                 </div>
             </div>
@@ -82,4 +55,4 @@ const MyAccount = () => {
     )
 }
 
-export default MyAccount
+export default UserOrderPage

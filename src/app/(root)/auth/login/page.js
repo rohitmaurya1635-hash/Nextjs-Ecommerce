@@ -32,7 +32,7 @@ import z from 'zod'
 import { zSchema } from '@/lib/zodSchema'
 import { zodResolver } from "@hookform/resolvers/zod"
 
-const loginPage = () => {
+const LoginPage = () => {
     const dispatch = useDispatch()
     const searchParams = useSearchParams()
     const router = useRouter();
@@ -174,7 +174,7 @@ const loginPage = () => {
 
                                     <div className='text-center'>
                                         <div className='flex justify-center items-center gap-1'>
-                                            <p>Don't have account?</p>
+                                            <p>Don&apos;t have account?</p>
                                             <Link href={WEBSITE_REGISTER} className='text-primary underline'>Create Account</Link>
                                         </div>
                                         <div className='mt-3'>
@@ -193,4 +193,4 @@ const loginPage = () => {
     )
 }
 
-export default loginPage
+export default LoginPage

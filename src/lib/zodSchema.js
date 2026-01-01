@@ -28,6 +28,40 @@ export const zSchema = z.object({
         .min(3, "Username must be at least 3 characters")
         .max(20, "Username must not exceed 20 characters"),
 
+    phone: z
+        .string()
+        .regex(/^[6-9]\d{9}$/, "Invalid mobile number"),
+
+    country: z
+        .string()
+        .min(2, "Country is required"),
+
+    state: z
+        .string()
+        .min(2, "State is required"),
+
+    city: z
+        .string()
+        .min(2, "City is required"),
+
+    pincode: z
+        .string()
+        .regex(/^\d{6}$/, "Invalid pincode"),
+
+    address: z
+        .string()
+        .min(2, "Address is required"),
+
+    landmark: z
+        .string()
+        .max(150, "Landmark too long")
+        .optional(),
+
+    ordernote: z
+        .string()
+        .max(300, "Order note too long")
+        .optional(),
+
     otp: z.string().min(6, { message: "Your one-time password must be 6 characters." }),
 
     _id: z.string().min(3, '_id is required'),
@@ -71,6 +105,11 @@ export const zSchema = z.object({
         .trim()
         .min(3, "Coupon code must be at least 3 characters long")
         .max(50, "Coupon code cannot exceed 50 characters"),
+
+    amount: z.union([
+        z.number().positive("Amount must be a positive number"),
+        z.string().transform((val) => Number(val)).refine((val) => !isNaN(val) && val >= 0, 'Please enter a valid number')
+    ]),
 
     minShoppingAmount: z.union([
         z.number().positive("Min. shopping amount must be a positive number"),

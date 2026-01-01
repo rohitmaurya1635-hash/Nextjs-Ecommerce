@@ -40,7 +40,7 @@ const Cart = () => {
                 <BsCart2 size={25} className="text-gray-600 hover:text-primary cursor-pointer" />
                 <span className='absolute bg-red-500 text-white rounded-full text-xs w-4 h-4 flex justify-center items-center -top-1 -right-2'>{cart.totalQty}</span>
             </SheetTrigger>
-            <SheetContent>
+            <SheetContent className='sm:max-w-[450px] w-full'>
                 <SheetHeader>
                     <SheetTitle className="text-2xl">My Cart</SheetTitle>
                     <SheetDescription></SheetDescription>
@@ -101,9 +101,6 @@ const Cart = () => {
                 </div>
             </SheetContent>
         </Sheet>
-        // <button type='button'>
-        //     
-        // </button>
     )
 }
 

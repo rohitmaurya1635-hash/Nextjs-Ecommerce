@@ -48,7 +48,6 @@ const UpdatePassword = ({ email }) => {
     })
 
     const onSubmit = async (values) => {
-        console.log(values);
         try {
             setLoading(true)
             const { data: passwordUpdateResponse } = await axios.put('/api/auth/reset-password/update-password', values)
