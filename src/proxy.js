@@ -4,7 +4,7 @@ import { ADMIN_DASHBOARD } from "./routes/AdminPanelRoutes"
 import { NextResponse } from "next/server"
 import { jwtVerify } from "jose"
 
-export async function middleware(request) {
+export async function proxy(request) {
     try {
         const pathname = request.nextUrl.pathname
         const hasToken = request.cookies.has('access_token')
