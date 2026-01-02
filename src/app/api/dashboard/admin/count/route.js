@@ -1,6 +1,7 @@
 import { catchError, response } from "@/lib/helperFunction";
 
 import CategoryModel from "@/models/Category.Model";
+import OrderModel from "@/models/Order.Model";
 import ProductModel from "@/models/Product.Model";
 import UserModel from "@/models/User.model";
 import { connectDB } from "@/lib/databaseConnection";
@@ -15,16 +16,18 @@ export async function GET() {
         }
         await connectDB()
 
-        const [categoryCount, productCount, userCount] = await Promise.all([
+        const [categoryCount, productCount, userCount, orderCount] = await Promise.all([
             CategoryModel.countDocuments({ deletedAt: null }),
             ProductModel.countDocuments({ deletedAt: null }),
             UserModel.countDocuments({ deletedAt: null, role: 'user' }),
+            OrderModel.countDocuments({ deletedAt: null })
         ])
 
         return response(true, 200, 'Dashboard counts fetched successfully.', {
             categoryCount,
             productCount,
             userCount,
+            orderCount,
         })
 
     } catch (error) {

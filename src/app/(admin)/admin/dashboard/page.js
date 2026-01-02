@@ -1,3 +1,4 @@
+import { ADMIN_ORDERS_SHOW, ADMIN_REVIEW_SHOW } from '@/routes/AdminPanelRoutes'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 
 import { Button } from '@/components/ui/button'
@@ -22,7 +23,7 @@ const AdminDashboard = () => {
                         <div className="flex justify-between items-center">
                             <span className='font-semibold'>Order Overview</span>
                             <Button type="button" asChild>
-                                <Link href="">View All</Link>
+                                <Link href={ADMIN_ORDERS_SHOW}>View All</Link>
                             </Button>
                         </div>
                     </CardHeader>
@@ -36,7 +37,7 @@ const AdminDashboard = () => {
                         <div className="flex justify-between items-center">
                             <span className='font-semibold'>Orders Status</span>
                             <Button type="button" asChild>
-                                <Link href="">View All</Link>
+                                <Link href={ADMIN_ORDERS_SHOW}>View All</Link>
                             </Button>
                         </div>
                     </CardHeader>
@@ -52,7 +53,7 @@ const AdminDashboard = () => {
                         <div className="flex justify-between items-center">
                             <span className='font-semibold'>Latest Order</span>
                             <Button type="button" asChild>
-                                <Link href="">View All</Link>
+                                <Link href={ADMIN_ORDERS_SHOW}>View All</Link>
                             </Button>
                         </div>
                     </CardHeader>
@@ -66,7 +67,7 @@ const AdminDashboard = () => {
                         <div className="flex justify-between items-center">
                             <span className='font-semibold'>Latest Review</span>
                             <Button type="button" asChild>
-                                <Link href="">View All</Link>
+                                <Link href={ADMIN_REVIEW_SHOW}>View All</Link>
                             </Button>
                         </div>
                     </CardHeader>

@@ -24,6 +24,10 @@ export const ADMIN_COUPON_ADD = '/admin/coupon/add'
 export const ADMIN_COUPON_SHOW = '/admin/coupon'
 export const ADMIN_COUPON_EDIT = (id) => id ? `/admin/coupon/edit/${id}` : ''
 
+// Coupon Route
+export const ADMIN_ORDERS_SHOW = '/admin/order'
+export const ADMIN_ORDERS_DETAILS = (order_id) => order_id ? `/admin/order/details/${order_id}` : ''
+
 // Customer Routes
 export const ADMIN_CUSTOMER_SHOW = '/admin/customers'
 

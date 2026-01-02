@@ -11,12 +11,25 @@ import Image from "next/image";
 import Link from "next/link";
 import Search from "./Search";
 import { VscAccount } from "react-icons/vsc";
+import { usePathname } from "next/navigation";
 import { useSelector } from "react-redux";
 
 const Header = () => {
     const auth = useSelector(store => store.authStore.auth)
+    const pathname = usePathname()
     const [openMenu, setOpenMenu] = useState(false);
     const [showSearch, setShowSearch] = useState(false);
+
+    const isActive = (href) => {
+        if (href === "/") return pathname === "/"
+        return pathname.startsWith(href)
+    }
+
+    const base = "text-gray-600 hover:text-primary hover:font-semibold transition-colors duration-200"
+
+    const active = "text-primary font-semibold"
+
+    const inactive = "text-gray-600"
 
     return (
         <div className="bg-white border-b lg:px-32 px-4">
@@ -49,23 +62,23 @@ const Header = () => {
 
                         </div>
                         <ul className="lg:flex justify-between items-center gap-10 px-3">
-                            <li className="text-gray-600 hover:text-primary hover:font-semibold">
-                                <Link href={WEBSITE_HOME} className="block py-2">Home</Link>
+                            <li className={`${base} ${isActive(WEBSITE_HOME) ? active : inactive}`}>
+                                <Link href={WEBSITE_HOME} className="block py-2" onClick={() => setOpenMenu(false)}>Home</Link>
                             </li>
-                            <li className="text-gray-600 hover:text-primary hover:font-semibold">
-                                <Link href={"#"} className="block py-2">About</Link>
+                            <li className={`${base} ${isActive("/about-us") ? active : inactive}`}>
+                                <Link href={"/about-us"} className="block py-2" onClick={() => setOpenMenu(false)}>About</Link>
                             </li>
-                            <li className="text-gray-600 hover:text-primary hover:font-semibold">
-                                <Link href={WEBSITE_SHOP} className="block py-2">Shop</Link>
+                            <li className={`${base} ${isActive(WEBSITE_SHOP) ? active : inactive}`}>
+                                <Link href={WEBSITE_SHOP} className="block py-2" onClick={() => setOpenMenu(false)}>Shop</Link>
                             </li>
-                            <li className="text-gray-600 hover:text-primary hover:font-semibold">
-                                <Link href={"#"} className="block py-2">T-Shirts</Link>
+                            <li className={`${base} ${isActive("/shop?categories=t-shirts") ? active : inactive}`}>
+                                <Link href={"/shop?categories=t-shirts"} className="block py-2" onClick={() => setOpenMenu(false)}>T-Shirts</Link>
                             </li>
-                            <li className="text-gray-600 hover:text-primary hover:font-semibold">
-                                <Link href={"#"} className="block py-2">Oversized</Link>
+                            <li className={`${base} ${isActive("/shop?categories=oversized") ? active : inactive}`}>
+                                <Link href={"/shop?categories=oversized"} className="block py-2" onClick={() => setOpenMenu(false)}>Oversized</Link>
                             </li>
-                            <li className="text-gray-600 hover:text-primary hover:font-semibold">
-                                <Link href={"#"} className="block py-2">Hoodies</Link>
+                            <li className={`${base} ${isActive("/shop?categories=hoodies") ? active : inactive}`}>
+                                <Link href={"/shop?categories=hoodies"} className="block py-2" onClick={() => setOpenMenu(false)}>Hoodies</Link>
                             </li>
                         </ul>
                     </nav>

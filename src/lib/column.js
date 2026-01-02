@@ -178,3 +178,69 @@ export const DT_REVIEW_COLUMN = [
         header: 'Review',
     },
 ]
+
+export const DT_ORDER_COLUMN = [
+    {
+        accessorKey: 'order_id',
+        header: 'Order Id',
+    },
+    {
+        accessorKey: 'payment_id',
+        header: 'Payment Id',
+    },
+    {
+        accessorKey: 'name',
+        header: 'Name',
+    },
+    {
+        accessorKey: 'email',
+        header: 'Email',
+    },
+    {
+        accessorKey: 'phone',
+        header: 'Phone',
+    },
+    {
+        accessorKey: 'country',
+        header: 'Country',
+    },
+    {
+        accessorKey: 'state',
+        header: 'State',
+    },
+    {
+        accessorKey: 'city',
+        header: 'City',
+    },
+    {
+        accessorKey: 'pincode',
+        header: 'Pincode',
+    },
+    {
+        accessorKey: 'products',
+        header: 'Total Item',
+        Cell: ({ renderedCellValue }) => (<span>{renderedCellValue?.length || 0}</span>)
+    },
+    {
+        accessorKey: 'subtotal',
+        header: 'Subtotal',
+    },
+    {
+        accessorKey: 'discount',
+        header: 'Discount',
+        Cell: ({ renderedCellValue }) => (<span>{Math.floor(renderedCellValue, 2) || 0}</span>)
+    },
+    {
+        accessorKey: 'total',
+        header: 'Total',
+    },
+    {
+        accessorKey: 'couponDiscountAmount',
+        header: 'Coupon Discount',
+    },
+    {
+        accessorKey: 'grandTotal',
+        header: 'Grand Total',
+    },
+
+]

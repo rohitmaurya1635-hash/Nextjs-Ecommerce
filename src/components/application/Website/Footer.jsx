@@ -1,3 +1,5 @@
+import { USER_DASHBOARD, WEBSITE_HOME, WEBSITE_LOGIN, WEBSITE_REGISTER, WEBSITE_SHOP } from '@/routes/WebsiteRoutes'
+
 import { FaInstagram } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
 import { FiTwitter } from "react-icons/fi";
@@ -9,7 +11,6 @@ import { MdOutlineMail } from "react-icons/md";
 import { MdOutlinePhone } from "react-icons/md";
 import React from 'react'
 import { RiFacebookCircleLine } from "react-icons/ri";
-import { WEBSITE_HOME } from '@/routes/WebsiteRoutes'
 
 const Footer = () => {
     return (
@@ -33,33 +34,33 @@ const Footer = () => {
                 <div>
                     <h4 className='text-xl font-bold uppercase mb-5'>Categories</h4>
                     <ul>
-                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={"#"}>T-shirt</Link></li>
-                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={"#"}>Hoodies</Link></li>
-                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={"#"}>Oversized</Link></li>
-                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={"#"}>Full Sleeves</Link></li>
-                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={"#"}>Polo</Link></li>
+                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={"/shop?categories=t-shirts"}>T-shirt</Link></li>
+                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={"/shop?categories=hoodies"}>Hoodies</Link></li>
+                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={"/shop?categories=oversized"}>Oversized</Link></li>
+                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={"/shop?categories=full-sleeves"}>Full Sleeves</Link></li>
+                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={"/shop?categories=polo"}>Polo</Link></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 className='text-xl font-bold uppercase mb-5'>Userfull Links</h4>
                     <ul>
-                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={"#"}>Home</Link></li>
-                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={"#"}>Shop</Link></li>
-                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={"#"}>About</Link></li>
-                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={"#"}>Register</Link></li>
-                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={"#"}>Login</Link></li>
+                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={WEBSITE_HOME}>Home</Link></li>
+                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={WEBSITE_SHOP}>Shop</Link></li>
+                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={"/about-us"}>About</Link></li>
+                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={WEBSITE_REGISTER}>Register</Link></li>
+                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={WEBSITE_LOGIN}>Login</Link></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 className='text-xl font-bold uppercase mb-5'>Help Center</h4>
                     <ul>
-                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={"#"}>Register</Link></li>
-                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={"#"}>Login</Link></li>
-                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={"#"}>My Account</Link></li>
-                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={"#"}>Privacy Policy</Link></li>
-                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={"#"}>Terms & Conditions</Link></li>
+                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={WEBSITE_REGISTER}>Register</Link></li>
+                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={WEBSITE_LOGIN}>Login</Link></li>
+                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={USER_DASHBOARD}>My Account</Link></li>
+                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={"/privacy-policy"}>Privacy Policy</Link></li>
+                        <li className='mb-2 text-gray-500 hover:text-primary'><Link href={"/terms-and-conditions"}>Terms & Conditions</Link></li>
                     </ul>
                 </div>
 
@@ -72,19 +73,19 @@ const Footer = () => {
                         </li>
                         <li className="mb-2 text-gray-500 flex gap-2">
                             <MdOutlinePhone size={20} />
-                            <Link className="hover:text-primary text-sm" href="tel:+91-8968641825">+91-8968641825</Link>
+                            <a href="tel:+91-8968641825" className="hover:text-primary text-sm">+91-8968641825</a>
                         </li>
                         <li className="mb-2 text-gray-500 flex gap-2">
                             <MdOutlineMail size={20} />
-                            <a className="hover:text-primary text-sm" href="mailto:rohitmaurya1635@gmail.com">rohitmaurya1635@gmail.com</a>
+                            <a href="mailto:rohitmaurya1635@gmail.com" className="hover:text-primary text-sm">rohitmaurya1635@gmail.com</a>
                         </li>
                     </ul>
                     <div className="flex gap-5 mt-5">
-                        <Link href={"#"}><FiYoutube size={25} className="text-primary" /></Link>
-                        <Link href={"#"}><RiFacebookCircleLine size={25} className="text-primary" /></Link>
-                        <Link href={"#"}><FaInstagram size={25} className="text-primary" /></Link>
-                        <Link href={"#"}><FiTwitter size={25} className="text-primary" /></Link>
-                        <Link href={"#"}><FaWhatsapp size={25} className="text-primary" /></Link> 
+                        <Link href={"https://www.youtube.com/"}><FiYoutube size={25} className="text-primary" /></Link>
+                        <Link href={"https://www.facebook.com/"}><RiFacebookCircleLine size={25} className="text-primary" /></Link>
+                        <Link href={"https://www.instagram.com/maurya_1635/"}><FaInstagram size={25} className="text-primary" /></Link>
+                        <Link href={"https://x.com/"}><FiTwitter size={25} className="text-primary" /></Link>
+                        <Link href={"https://web.whatsapp.com/"}><FaWhatsapp size={25} className="text-primary" /></Link>
                     </div>
                 </div>
             </div>

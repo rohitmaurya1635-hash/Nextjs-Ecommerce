@@ -15,7 +15,6 @@ export async function GET(request, { params }) {
         if (!orderid || typeof orderid !== 'string') {
             return response(false, 400, 'Order id is required.');
         }
-        console.log(orderid)
         const getOrder = await OrderModel.findOne({
             order_id: orderid,
             deletedAt: null

@@ -1,7 +1,7 @@
 'use client'
 
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
-import { DT_CATEGORY_COLUMN, DT_CUSTOMERS_COLUMN, DT_PRODUCT_COLUMN, DT_PRODUCT_VARIANT_COLUMN } from '@/lib/column'
+import { DT_CATEGORY_COLUMN, DT_CUSTOMERS_COLUMN, DT_ORDER_COLUMN, DT_PRODUCT_COLUMN, DT_PRODUCT_VARIANT_COLUMN } from '@/lib/column'
 import React, { useCallback, useMemo } from 'react'
 
 import { ADMIN_DASHBOARD } from '@/routes/AdminPanelRoutes'
@@ -51,6 +51,13 @@ const TRASH_CONFIG = {
         fetchUrl: '/api/review',
         exportUrl: '/api/review/export',
         deleteUrl: '/api/review/delete',
+    },
+    orders: {
+        title: 'Orders Trash',
+        columns: DT_ORDER_COLUMN,
+        fetchUrl: '/api/orders',
+        exportUrl: '/api/orders/export',
+        deleteUrl: '/api/orders/delete',
     },
 }
 
