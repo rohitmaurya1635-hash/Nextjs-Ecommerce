@@ -35,6 +35,7 @@ const Header = () => {
         <div className="bg-white border-b lg:px-32 px-4">
             <div className="flex justify-between items-center lg:py-5 py-3">
                 <Link href={WEBSITE_HOME}>
+                
                     <Image
                         src="/assets/images/logo-black.png"
                         width={383}
