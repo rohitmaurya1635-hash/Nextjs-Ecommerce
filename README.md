@@ -1,42 +1,201 @@
-A modern, scalable e-commerce application built with Next.js 15, MongoDB, and Redux Toolkit. UI is built with shadcn/ui for a clean, accessible, and customizable component system. Features: JWT + OTP auth, email verification, product & cart management, and secure checkout — organized for easy extension and production readiness.
+# 🛒 Next.js E‑Commerce Application
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+A modern, scalable **full‑stack e‑commerce platform** built with **Next.js (App Router)**, **MongoDB**, and **Redux Toolkit**. The UI is crafted using **Tailwind CSS** and **shadcn/ui**, providing a clean, accessible, and highly customizable design system.
 
-## Getting Started
+The project is production‑ready, well‑structured, and designed for easy extension.
 
-First, run the development server:
+---
+
+## 🌐 Live Demo
+
+* **Storefront:** [https://nextjs-ecommerce-three-self.vercel.app/](https://nextjs-ecommerce-three-self.vercel.app/)
+* **Admin Panel:** [https://nextjs-ecommerce-three-self.vercel.app/admin](https://nextjs-ecommerce-three-self.vercel.app/admin)
+* **Auth Pages:** [https://nextjs-ecommerce-three-self.vercel.app/auth](https://nextjs-ecommerce-three-self.vercel.app/auth)
+
+---
+
+## ✨ Features
+
+### 🛍️ User Features
+
+* Product listing with categories & variants
+* Product details with reviews
+* Cart & checkout flow
+* Secure payments with **Razorpay**
+* JWT‑based authentication
+* OTP login & email verification
+* User dashboard (orders, profile)
+
+### 🛠️ Admin Features
+
+* Admin dashboard & analytics
+* Product & category management
+* Media manager (Cloudinary)
+* Coupon & discount management
+* Order management
+* Customer management
+
+### 🔐 Security
+
+* JWT authentication
+* OTP & email verification
+* Server‑only secrets
+* Protected admin routes
+
+---
+
+## 🧱 Tech Stack
+
+### Frontend
+
+* **Next.js 16 (App Router)**
+* **React**
+* **Redux Toolkit**
+* **Tailwind CSS**
+* **shadcn/ui**
+
+### Backend
+
+* **Next.js API Routes**
+* **MongoDB (Mongoose)**
+* **JWT Authentication**
+
+### Integrations
+
+* **Cloudinary** – image upload & media handling
+* **Razorpay** – payments
+* **Nodemailer (Gmail SMTP)** – emails & OTP
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+ ├── app/
+ │   ├── layout.js           # Root layout
+ │   ├── (website)/          # Public website
+ │   ├── (admin)/            # Admin panel
+ │   ├── api/                # API routes
+ │   └── auth/               # Authentication pages
+ ├── components/
+ ├── lib/
+ ├── models/
+ ├── redux/
+ └── utils/
+```
+
+---
+
+## 🚀 Getting Started (Local Setup)
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/your-username/Nextjs-Ecommerce.git
+cd Nextjs-Ecommerce
+```
+
+### 2️⃣ Install dependencies
+
+```bash
+npm install
+```
+
+### 3️⃣ Configure environment variables
+
+Create a `.env` file in the root directory and add required values:
+
+```env
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
+NEXT_PUBLIC_API_BASE_URL=http://localhost:3000/api
+
+MONGODB_URI=your_mongodb_uri
+SECRET_KEY=your_secret_key
+
+NODEMAILER_HOST=smtp.gmail.com
+NODEMAILER_PORT=587
+NODEMAILER_EMAIL=your_email
+NODEMAILER_PASSWORD=your_app_password
+
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=your_cloud_name
+NEXT_PUBLIC_CLOUDINARY_API_KEY=your_api_key
+NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET=your_preset
+CLOUDINARY_SECRET_KEY=your_secret
+
+NEXT_PUBLIC_RAZORPAY_KEY_ID=your_key_id
+RAZORPAY_KEY_SECRET=your_key_secret
+```
+
+### 4️⃣ Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open **[http://localhost:3000](http://localhost:3000)** in your browser.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🏗️ Build for Production
 
-## Learn More
+```bash
+npm run build
+npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ☁️ Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The app is deployed on **Vercel**.
 
-## Deploy on Vercel
+* Add environment variables in **Vercel → Project Settings → Environment Variables**
+* Redeploy without cache after changes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+📖 Official guide: [https://nextjs.org/docs/app/building-your-application/deploying](https://nextjs.org/docs/app/building-your-application/deploying)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
 
+## 🧠 Best Practices Used
 
-rohitmaurya1635_db_user
-NKx8LJx8XkHxCScb
+* App Router layouts & route groups
+* Server/client component separation
+* Case‑sensitive file naming (Linux safe)
+* Secure env handling
+* Scalable folder structure
+
+---
+
+## 📌 Future Enhancements
+
+* Wishlist
+* Product search & filters
+* Order invoices
+* Admin role permissions
+* Performance & SEO optimizations
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+1. Fork the repo
+2. Create your feature branch
+3. Commit your changes
+4. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## 👤 Author
+
+**Rohit Kumar**
+
+If you like this project, don’t forget to ⭐ the repository!
