@@ -125,7 +125,7 @@ export const otpEmail = (otp) => {
 																	style="line-height:10px">
 																	<div style="max-width: 250px;"><img
 																			alt="reset-password" height="auto"
-																			src="https://res.cloudinary.com/du84pvhbl/image/upload/v1759566777/otp-email_ssycgf.webp"
+																			src="https://res.cloudinary.com/du84pvhbl/image/upload/v1767715649/otp-email_o3b4hn.webp"
 																			style="display: block; height: auto; border: 0; width: 100%;"
 																			title="reset-password" width="250" /></div>
 																</div>
@@ -190,8 +190,7 @@ export const otpEmail = (otp) => {
 																	<p style="margin: 0;">If you did not request this,
 																		please ignore this message.</p>
 																	<p style="margin: 0;">Thank you,<br />
-                                                                     <a href="https://www.youtube.com/@developergoswami" target="_blank">Developer
-																		Goswami</a>
+                                                                     <a href="https://github.com/rohitmaurya1635-hash" target="_blank">Rohit Maurya</a>
                                                                     </p>
 																</div>
 															</td>
